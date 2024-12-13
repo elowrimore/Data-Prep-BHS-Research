@@ -1,0 +1,79 @@
+# **Data Cleaning**
+
+## Tidy Data
+
+Clean and organized data are necessary for efficient and successful analyses. The concept of *tidy data* serves as a guiding principle for achieving this organization. Fundamentally, tidy data adhere to three simple yet powerful rules: each variable is represented by a column, each observation is represented by a row, and each cell contains a single measurement. Variables are the aspects being measured, such as biomass of forage or group size, while observations are repeated measurements of those variables across different experimental units.
+
+Because I created my relational database before entering any data, I did not need to clean my data prior to populating my database. However, below contains information of how to use `tidyverse` to effectively manipulate data for future reference.
+
+------------------------------------------------------------------------
+
+## The Tidyverse
+
+The tidyverse is a collection of R packages designed for data science, offering tools that make data manipulation, visualization, and analysis more intuitive and efficient. By installing and loading the `tidyverse` package, it will automattically attach the 9 packages that are part of the tidyverse.
+
+```{r tidyverse, warning=FALSE}
+library(tidyverse)
+```
+
+`dplyr` is especially useful for data cleaning and manipulation. Some of the most commonly used functions include mutate(), filter(), case_when(), select(), and arrange(). Below, are examples of how to use these functions.
+
+------------------------------------------------------------------------
+
+### Mutate
+
+Use `mutate()` to add a new column or modify an existing one. For example, calculate whether the sheep is "Yearling" or "Adult" based on age.
+
+```{r mutate, eval=FALSE, echo=TRUE}
+  mutate(age = ifelse(Age < 2, "yearling", "adult"))
+```
+
+------------------------------------------------------------------------
+
+### Filter
+
+Use `filter()` to extract rows that meet a specific condition. For instance, extract only female sheep.
+
+```{r filter, eval=FALSE, echo=TRUE}
+ewes <- sheep %>%
+  filter(Sex == "F")
+```
+
+------------------------------------------------------------------------
+
+### Case_when()
+
+Use `case_when()` to assign values based on multiple conditions. For example, create a new column by classifying total sheep in group to a group size of "Small," "Medium," or "Large".
+
+```{r case_when, eval=FALSE, echo=TRUE}
+observations <- observations %>% 
+  mutate(group_size = case_when(
+    total < 10 ~ "Small",   
+    total > 35 ~ "Large",  
+    TRUE ~ "Medium"
+  ))
+```
+
+------------------------------------------------------------------------
+
+### Select
+
+Use `select()` to keep only the columns you need. For example, extract columns related to biological samples: fecal, blood, dna, and nasal.
+
+```{r select, eval=FALSE, echo=TRUE}
+sample_checklist <- sheep %>% 
+  select(fecal, blood, dna, nasal)
+```
+
+------------------------------------------------------------------------
+
+### Arrange
+
+Use `arrange()` to sort rows. For instance, order the dataset by number of ewes in a group in descending order:
+
+```{r arrange, eval=FALSE, echo=TRUE}
+observations <- observations %>%
+  arrange(desc(ewes))
+```
+
+------------------------------------------------------------------------

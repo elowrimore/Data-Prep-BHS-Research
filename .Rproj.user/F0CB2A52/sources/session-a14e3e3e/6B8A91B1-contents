@@ -1,0 +1,14 @@
+---
+title: 'Chapter 2: Database Creation'
+author: "Emily Lowrimore"
+date: "2024-12-11"
+output: html_document
+---
+
+# Chapter 2: Database Creation
+
+## Relational Database
+
+Organizing data is crucial for effective data management and analysis, and a relational database provides a robust framework for this purpose. By structuring data into interconnected tables that reflect real-world relationships between data entities, relational databases enhance both the integrity and consistency of the dataset. This approach encourages critical thinking about data structure while reducing redundancy and improving quality control. Additionally, the centralized storage and design of relational databases streamline data processing and facilitate efficient access, making them especially valuable for collaborative research efforts. I will be designing, creating, and populating a relational database to store data collected for my research.
+
+![Figure 2.1: Relational Database Design](images/DatabaseDesign_Lowrimore.png)

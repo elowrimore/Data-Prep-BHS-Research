@@ -1,0 +1,31 @@
+{
+    "id": "5E8184A0",
+    "path": "~/Fall25/WLF553/FinalProject/01-chp2.Rmd",
+    "project_path": "01-chp2.Rmd",
+    "type": "r_markdown",
+    "hash": "1435734514",
+    "contents": "",
+    "dirty": false,
+    "created": 1734121153786.0,
+    "source_on_save": false,
+    "relative_order": 5,
+    "properties": {
+        "source_window_id": "",
+        "Source": "Source",
+        "cursorPosition": "8,0",
+        "scrollLine": "8",
+        "rmdVisualMode": "true",
+        "rmdVisualWrapConfigured": "true",
+        "docOutlineVisible": "1",
+        "rmdVisualModeLocation": "1839:579.0908813476562",
+        "rmdVisualCollapsedChunks": ""
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1734123071,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1734123071642,
+    "read_only": false,
+    "read_only_alternatives": []
+}

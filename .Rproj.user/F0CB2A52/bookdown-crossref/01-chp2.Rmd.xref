@@ -1,0 +1,16 @@
+h1:building-a-database 
+h2:organizing-data-with-relational-databases Organizing Data with Relational Databases
+h2:database-design Database Design
+h2:creating-a-database Creating a Database
+h3:install-and-load-required-packages Install and Load Required Packages
+h3:link-database Link Database
+h2:populating-a-database Populating a Database
+h3:sheep-table 
+h3:observations-table 
+h3:mortalities-table 
+h3:lambs-table 
+h3:resight-table 
+h3:group-behavior-table 
+h3:collars-table 
+h3:spatial-data-table 
+
