@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 2 Building a Database | Data Preperation for Bighorn Sheep Research Project</title>
+  <meta name="description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 2 Building a Database | Data Preperation for Bighorn Sheep Research Project" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 2 Building a Database | Data Preperation for Bighorn Sheep Research Project" />
+  
+  <meta name="twitter:description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  
+
+<meta name="author" content="Emily Lowrimore" />
+
+
+<meta name="date" content="2024-12-13" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+<link rel="next" href="data-cleaning.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Data Preperation for Bighorn Sheep Project</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> <strong>Background</strong></a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#purpose-of-this-book"><i class="fa fa-check"></i><b>1.1</b> Purpose of This Book</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#ecological-background-of-study"><i class="fa fa-check"></i><b>1.2</b> Ecological Background of Study</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#study-system"><i class="fa fa-check"></i><b>1.3</b> Study System</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="building-a-database.html"><a href="building-a-database.html"><i class="fa fa-check"></i><b>2</b> <strong>Building a Database</strong></a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="building-a-database.html"><a href="building-a-database.html#organizing-data-with-relational-databases"><i class="fa fa-check"></i><b>2.1</b> Organizing Data with Relational Databases</a></li>
+<li class="chapter" data-level="2.2" data-path="building-a-database.html"><a href="building-a-database.html#database-design"><i class="fa fa-check"></i><b>2.2</b> Database Design</a></li>
+<li class="chapter" data-level="2.3" data-path="building-a-database.html"><a href="building-a-database.html#creating-a-database"><i class="fa fa-check"></i><b>2.3</b> Creating a Database</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="building-a-database.html"><a href="building-a-database.html#install-and-load-required-packages"><i class="fa fa-check"></i><b>2.3.1</b> Install and Load Required Packages</a></li>
+<li class="chapter" data-level="2.3.2" data-path="building-a-database.html"><a href="building-a-database.html#link-database"><i class="fa fa-check"></i><b>2.3.2</b> Link Database</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="building-a-database.html"><a href="building-a-database.html#populating-a-database"><i class="fa fa-check"></i><b>2.4</b> Populating a Database</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="building-a-database.html"><a href="building-a-database.html#sheep-table"><i class="fa fa-check"></i><b>2.4.1</b> <strong>Sheep Table</strong></a></li>
+<li class="chapter" data-level="2.4.2" data-path="building-a-database.html"><a href="building-a-database.html#observations-table"><i class="fa fa-check"></i><b>2.4.2</b> <strong>Observations Table</strong></a></li>
+<li class="chapter" data-level="2.4.3" data-path="building-a-database.html"><a href="building-a-database.html#mortalities-table"><i class="fa fa-check"></i><b>2.4.3</b> <strong>Mortalities Table</strong></a></li>
+<li class="chapter" data-level="2.4.4" data-path="building-a-database.html"><a href="building-a-database.html#lambs-table"><i class="fa fa-check"></i><b>2.4.4</b> <strong>Lambs Table</strong></a></li>
+<li class="chapter" data-level="2.4.5" data-path="building-a-database.html"><a href="building-a-database.html#resight-table"><i class="fa fa-check"></i><b>2.4.5</b> <strong>Resight Table</strong></a></li>
+<li class="chapter" data-level="2.4.6" data-path="building-a-database.html"><a href="building-a-database.html#group-behavior-table"><i class="fa fa-check"></i><b>2.4.6</b> <strong>Group Behavior Table</strong></a></li>
+<li class="chapter" data-level="2.4.7" data-path="building-a-database.html"><a href="building-a-database.html#collars-table"><i class="fa fa-check"></i><b>2.4.7</b> <strong>Collars Table</strong></a></li>
+<li class="chapter" data-level="2.4.8" data-path="building-a-database.html"><a href="building-a-database.html#spatial-data-table"><i class="fa fa-check"></i><b>2.4.8</b> <strong>Spatial Data Table</strong></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="data-cleaning.html"><a href="data-cleaning.html"><i class="fa fa-check"></i><b>3</b> <strong>Data Cleaning</strong></a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="data-cleaning.html"><a href="data-cleaning.html#tidy-data"><i class="fa fa-check"></i><b>3.1</b> Tidy Data</a></li>
+<li class="chapter" data-level="3.2" data-path="data-cleaning.html"><a href="data-cleaning.html#the-tidyverse"><i class="fa fa-check"></i><b>3.2</b> The Tidyverse</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="data-cleaning.html"><a href="data-cleaning.html#mutate"><i class="fa fa-check"></i><b>3.2.1</b> Mutate</a></li>
+<li class="chapter" data-level="3.2.2" data-path="data-cleaning.html"><a href="data-cleaning.html#filter"><i class="fa fa-check"></i><b>3.2.2</b> Filter</a></li>
+<li class="chapter" data-level="3.2.3" data-path="data-cleaning.html"><a href="data-cleaning.html#case_when"><i class="fa fa-check"></i><b>3.2.3</b> Case_when()</a></li>
+<li class="chapter" data-level="3.2.4" data-path="data-cleaning.html"><a href="data-cleaning.html#select"><i class="fa fa-check"></i><b>3.2.4</b> Select</a></li>
+<li class="chapter" data-level="3.2.5" data-path="data-cleaning.html"><a href="data-cleaning.html#arrange"><i class="fa fa-check"></i><b>3.2.5</b> Arrange</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="data-exploration.html"><a href="data-exploration.html"><i class="fa fa-check"></i><b>4</b> <strong>Data Exploration</strong></a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="data-exploration.html"><a href="data-exploration.html#summary-statistics"><i class="fa fa-check"></i><b>4.1</b> Summary Statistics</a></li>
+<li class="chapter" data-level="4.2" data-path="data-exploration.html"><a href="data-exploration.html#data-vizualizations"><i class="fa fa-check"></i><b>4.2</b> Data Vizualizations</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="data-exploration.html"><a href="data-exploration.html#simple-plots"><i class="fa fa-check"></i><b>4.2.1</b> Simple Plots</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="data-exploration.html"><a href="data-exploration.html#exploring-data"><i class="fa fa-check"></i><b>4.3</b> Exploring Data</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="data-exploration.html"><a href="data-exploration.html#relationship-between-group-size-and-behavior"><i class="fa fa-check"></i><b>4.3.1</b> <strong>Relationship Between Group Size and Behavior</strong></a></li>
+<li class="chapter" data-level="4.3.2" data-path="data-exploration.html"><a href="data-exploration.html#survival"><i class="fa fa-check"></i><b>4.3.2</b> <strong>Survival</strong></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="conclusion.html"><a href="conclusion.html"><i class="fa fa-check"></i><b>5</b> <strong>Conclusion</strong></a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="conclusion.html"><a href="conclusion.html#references"><i class="fa fa-check"></i><b>5.1</b> <strong>References</strong></a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Data Preperation for Bighorn Sheep Research Project</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="building-a-database" class="section level1 hasAnchor" number="2">
+<h1><span class="header-section-number">Chapter 2</span> <strong>Building a Database</strong><a href="building-a-database.html#building-a-database" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="organizing-data-with-relational-databases" class="section level2 hasAnchor" number="2.1">
+<h2><span class="header-section-number">2.1</span> Organizing Data with Relational Databases<a href="building-a-database.html#organizing-data-with-relational-databases" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Organizing data is crucial for effective data management and analysis, and a relational database provides a robust framework for this purpose. By structuring data into interconnected tables that reflect real-world relationships between data entities, relational databases enhance both the integrity and consistency of the dataset. This approach encourages critical thinking about data structure while reducing redundancy and improving quality control. Additionally, the centralized storage and design of relational databases streamline data processing and facilitate efficient access, making them especially valuable for collaborative research efforts. I will be designing, building, and populating a relational database to store data collected for my research.</p>
+<hr />
+</div>
+<div id="database-design" class="section level2 hasAnchor" number="2.2">
+<h2><span class="header-section-number">2.2</span> Database Design<a href="building-a-database.html#database-design" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Building on these principles, the design of my relational database reflects the structure and scope of the data collected for my research. Each table is organized around a specific sampling unit that represents a unique level of data collection, ensuring clarity and consistency. For instance, individual sheep serve as the sampling unit for a table containing characteristics like sex, age, and body condition, while group observations use a group ID as their sampling unit to record variables such as group number, size, habitat type, and location. Each table includes a <strong>primary key</strong>, a unique identifier for every record in the table, such as an individual ID for sheep or a group ID for observations. <strong>Foreign keys</strong>, which are variables shared between tables, link these datasets and maintain relational integrity; for example, an individual ID links observations of collared ewes to their lambs or mortality records. See conceptual diagram of relational database for all data tables below.</p>
+<div class="float">
+<img src="images/DatabaseDesign_Lowrimore.png" alt="Relational database design. Primary keys (PK) are in bold and italicized, foreign keys (FK) are italicized." />
+<div class="figcaption">Relational database design. Primary keys (PK) are in bold and italicized, foreign keys (FK) are italicized.</div>
+</div>
+<hr />
+<p>Defining clear sampling units ensures each table is logically structured and avoids redundancy, while primary and foreign keys enable seamless connections between related data. This relational architecture mirrors real-world relationships and facilitates accurate querying and analysis.</p>
+<hr />
+</div>
+<div id="creating-a-database" class="section level2 hasAnchor" number="2.3">
+<h2><span class="header-section-number">2.3</span> Creating a Database<a href="building-a-database.html#creating-a-database" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>To construct the relational database for this project, I used the <code>RSQLite</code> and <code>DBI</code> packages in <code>R</code>, which provide an interface for creating and managing SQLite databases. This approach allows for seamless integration with <code>R</code> workflows, enabling efficient storage, querying, and manipulation of data directly within the <code>R</code> environment.</p>
+<div id="install-and-load-required-packages" class="section level3 hasAnchor" number="2.3.1">
+<h3><span class="header-section-number">2.3.1</span> Install and Load Required Packages<a href="building-a-database.html#install-and-load-required-packages" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Load necessary packages using the <code>library()</code> function.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="building-a-database.html#cb1-1" tabindex="-1"></a><span class="fu">library</span>(RSQLite)</span>
+<span id="cb1-2"><a href="building-a-database.html#cb1-2" tabindex="-1"></a><span class="fu">library</span>(DBI)</span></code></pre></div>
+<p>Note that if these packages have never been installed on your computer use <code>install.packages()</code> instead.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="building-a-database.html#cb2-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;RSQLite&quot;</span>)</span>
+<span id="cb2-2"><a href="building-a-database.html#cb2-2" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;DBI&quot;</span>)</span></code></pre></div>
+<hr />
+</div>
+<div id="link-database" class="section level3 hasAnchor" number="2.3.2">
+<h3><span class="header-section-number">2.3.2</span> Link Database<a href="building-a-database.html#link-database" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The <code>dbConnect</code> function is used to establish a connection to a database by providing a file path. If the database file already exists at that path, it connects to it; if not, it creates a new database at the specified location.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="building-a-database.html#cb3-1" tabindex="-1"></a><span class="co">#Link database</span></span>
+<span id="cb3-2"><a href="building-a-database.html#cb3-2" tabindex="-1"></a>jd_sheep_db <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(RSQLite<span class="sc">::</span><span class="fu">SQLite</span>(), <span class="st">&quot;C:/Users/emily/Documents/Project/Data/raw/Database/jd_sheep.db&quot;</span>)</span></code></pre></div>
+<hr />
+</div>
+</div>
+<div id="populating-a-database" class="section level2 hasAnchor" number="2.4">
+<h2><span class="header-section-number">2.4</span> Populating a Database<a href="building-a-database.html#populating-a-database" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="sheep-table" class="section level3 hasAnchor" number="2.4.1">
+<h3><span class="header-section-number">2.4.1</span> <strong>Sheep Table</strong><a href="building-a-database.html#sheep-table" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The sheep table has the primary key of sheepID and contains data for each collared sheep including sex, age at capture, body condition, max fat, condition scorer, max body temperature, pregnancy status, whether biological samples (fecal, DNA, nasal swabs, and blood) were collected during capture, latitude and longitude of capture location, and the capture zone from which the sheep came.</p>
+<p>First, I need to create an empty table with a primary key specified, as well as foreign keys if they exists. I also imposed constraints for the data to follow to avoid data entry errors and ensure uniform labeling.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="building-a-database.html#cb4-1" tabindex="-1"></a><span class="fu">dbExecute</span>(jd_sheep_db,</span>
+<span id="cb4-2"><a href="building-a-database.html#cb4-2" tabindex="-1"></a>          <span class="st">&quot;CREATE TABLE sheep (</span></span>
+<span id="cb4-3"><a href="building-a-database.html#cb4-3" tabindex="-1"></a><span class="st">  sheep_id varchar(15) NOT NULL PRIMARY KEY,</span></span>
+<span id="cb4-4"><a href="building-a-database.html#cb4-4" tabindex="-1"></a><span class="st">  sex char(1) CHECK (sex IN (&#39;M&#39;, &#39;F&#39;)),</span></span>
+<span id="cb4-5"><a href="building-a-database.html#cb4-5" tabindex="-1"></a><span class="st">  age varchar(2),</span></span>
+<span id="cb4-6"><a href="building-a-database.html#cb4-6" tabindex="-1"></a><span class="st">  condition real,</span></span>
+<span id="cb4-7"><a href="building-a-database.html#cb4-7" tabindex="-1"></a><span class="st">  fat real,</span></span>
+<span id="cb4-8"><a href="building-a-database.html#cb4-8" tabindex="-1"></a><span class="st">  scorer char(2),</span></span>
+<span id="cb4-9"><a href="building-a-database.html#cb4-9" tabindex="-1"></a><span class="st">  pregnant varchar(6) CHECK (pregnant IN (&#39;Y&#39;, &#39;N&#39;, &#39;unkwn&#39;, &#39;&#39;)),</span></span>
+<span id="cb4-10"><a href="building-a-database.html#cb4-10" tabindex="-1"></a><span class="st">  lat real,</span></span>
+<span id="cb4-11"><a href="building-a-database.html#cb4-11" tabindex="-1"></a><span class="st">  long real,</span></span>
+<span id="cb4-12"><a href="building-a-database.html#cb4-12" tabindex="-1"></a><span class="st">  capture_zone varchar(15),</span></span>
+<span id="cb4-13"><a href="building-a-database.html#cb4-13" tabindex="-1"></a><span class="st">  fecal char(1) CHECK (fecal IN (&#39;Y&#39;, &#39;N&#39;)),</span></span>
+<span id="cb4-14"><a href="building-a-database.html#cb4-14" tabindex="-1"></a><span class="st">  dna char(1) CHECK (dna IN (&#39;Y&#39;, &#39;N&#39;)),</span></span>
+<span id="cb4-15"><a href="building-a-database.html#cb4-15" tabindex="-1"></a><span class="st">  nasal char(1) CHECK (nasal IN (&#39;Y&#39;, &#39;N&#39;)),</span></span>
+<span id="cb4-16"><a href="building-a-database.html#cb4-16" tabindex="-1"></a><span class="st">  blood char(1) CHECK (blood IN (&#39;Y&#39;, &#39;N&#39;)),</span></span>
+<span id="cb4-17"><a href="building-a-database.html#cb4-17" tabindex="-1"></a><span class="st">  temp real,</span></span>
+<span id="cb4-18"><a href="building-a-database.html#cb4-18" tabindex="-1"></a><span class="st">  accession char(4),</span></span>
+<span id="cb4-19"><a href="building-a-database.html#cb4-19" tabindex="-1"></a><span class="st">  notes varchar</span></span>
+<span id="cb4-20"><a href="building-a-database.html#cb4-20" tabindex="-1"></a><span class="st">);&quot;</span>)</span></code></pre></div>
+<p>Next step is to populate the tables with existing csv files. First, read in the csv file.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="building-a-database.html#cb5-1" tabindex="-1"></a>sheep <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;../../../Project/Data/raw/Database/sheep.csv&quot;</span>)</span></code></pre></div>
+<p>As mentioned above, certain constraints will need to be enforced for the table to be populated properly. I double checked these constraints by using <code>names()</code> to get the column names or <code>head()</code> to look at the first few rows of data.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="building-a-database.html#cb6-1" tabindex="-1"></a><span class="fu">names</span>(sheep)</span></code></pre></div>
+<pre><code>##  [1] &quot;sheep_id&quot;     &quot;sex&quot;          &quot;age&quot;          &quot;condition&quot;    &quot;fat&quot;         
+##  [6] &quot;scorer&quot;       &quot;pregnant&quot;     &quot;lat&quot;          &quot;long&quot;         &quot;capture_zone&quot;
+## [11] &quot;fecal&quot;        &quot;dna&quot;          &quot;nasal&quot;        &quot;blood&quot;        &quot;temp&quot;        
+## [16] &quot;accession&quot;    &quot;notes&quot;</code></pre>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="building-a-database.html#cb8-1" tabindex="-1"></a><span class="fu">head</span>(sheep, <span class="dv">3</span>)</span></code></pre></div>
+<pre><code>##   sheep_id sex age condition fat scorer pregnant      lat      long
+## 1 purple03   F  4+       1.5   0     RL        Y 45.25299 -120.5251
+## 2  white48   F  4+       2.0   0     RL        Y 45.32121 -120.5393
+## 3 orange74   F   4       2.0   1     RL        Y 45.29759 -120.5340
+##   capture_zone fecal dna nasal blood  temp accession
+## 1   AdobePoint     Y   Y     Y     Y 103.1      9381
+## 2  WilsonPoint     Y   Y     Y     Y 103.7      9362
+## 3  WilsonPoint     Y   Y     Y     Y 104.5      9389
+##                                                     notes
+## 1  Broken tail (old injury). Possible blind in right eye.
+## 2 Eyes looked a little buggy, but seemed fine otherwise. 
+## 3                              Only 1 tiger top of blood.</code></pre>
+<p>Everything looks good, now I populate the table. Use <code>dbExecute()</code>to do this.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="building-a-database.html#cb10-1" tabindex="-1"></a><span class="fu">dbWriteTable</span>(jd_sheep_db, <span class="st">&quot;sheep&quot;</span>, sheep, <span class="at">append =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<p>Now, I confirm that the data was loaded properly.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="building-a-database.html#cb11-1" tabindex="-1"></a><span class="fu">dbGetQuery</span>(jd_sheep_db, <span class="st">&quot;SELECT * FROM sheep LIMIT 3&quot;</span>)</span></code></pre></div>
+<pre><code>##   sheep_id sex age condition fat scorer pregnant      lat      long
+## 1 purple03   F  4+       1.5   0     RL        Y 45.25299 -120.5251
+## 2  white48   F  4+       2.0   0     RL        Y 45.32121 -120.5393
+## 3 orange74   F   4       2.0   1     RL        Y 45.29759 -120.5340
+##   capture_zone fecal dna nasal blood  temp accession
+## 1   AdobePoint     Y   Y     Y     Y 103.1      9381
+## 2  WilsonPoint     Y   Y     Y     Y 103.7      9362
+## 3  WilsonPoint     Y   Y     Y     Y 104.5      9389
+##                                                     notes
+## 1  Broken tail (old injury). Possible blind in right eye.
+## 2 Eyes looked a little buggy, but seemed fine otherwise. 
+## 3                              Only 1 tiger top of blood.</code></pre>
+<p>Repeat these steps for each table in the database.</p>
+<hr />
+</div>
+<div id="observations-table" class="section level3 hasAnchor" number="2.4.2">
+<h3><span class="header-section-number">2.4.2</span> <strong>Observations Table</strong><a href="building-a-database.html#observations-table" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The observations table has the primary key of groupID and contains data collected during sheep observations including characteristics of the observation site such as date, number of observers and primary observer, coordinates of group of sheep, habitat type, slope, aspect, weather, temperation, and gernal location. The total number of sheep within the group is recorded as well as the composition of ewes, lambs, yearling ewes, yearling rams, and rams in the group.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="building-a-database.html#cb13-1" tabindex="-1"></a><span class="fu">dbExecute</span>(jd_sheep_db,</span>
+<span id="cb13-2"><a href="building-a-database.html#cb13-2" tabindex="-1"></a>          <span class="st">&quot;CREATE TABLE observations (</span></span>
+<span id="cb13-3"><a href="building-a-database.html#cb13-3" tabindex="-1"></a><span class="st">  group_id char(7) NOT NULL PRIMARY KEY,</span></span>
+<span id="cb13-4"><a href="building-a-database.html#cb13-4" tabindex="-1"></a><span class="st">  date date,</span></span>
+<span id="cb13-5"><a href="building-a-database.html#cb13-5" tabindex="-1"></a><span class="st">  n_observers integer,</span></span>
+<span id="cb13-6"><a href="building-a-database.html#cb13-6" tabindex="-1"></a><span class="st">  lead_observer varchar(3),</span></span>
+<span id="cb13-7"><a href="building-a-database.html#cb13-7" tabindex="-1"></a><span class="st">  lat real,</span></span>
+<span id="cb13-8"><a href="building-a-database.html#cb13-8" tabindex="-1"></a><span class="st">  long real,</span></span>
+<span id="cb13-9"><a href="building-a-database.html#cb13-9" tabindex="-1"></a><span class="st">  habitat varchar(10) CHECK (habitat IN (&#39;grass&#39;, &#39;cliff&#39;, &#39;outcrop&#39;, &#39;scree&#39;, &#39;mixed&#39;)),</span></span>
+<span id="cb13-10"><a href="building-a-database.html#cb13-10" tabindex="-1"></a><span class="st">  slope varchar(10) CHECK (slope IN (&#39;top&#39;, &#39;mid&#39;, &#39;bottom&#39;)),</span></span>
+<span id="cb13-11"><a href="building-a-database.html#cb13-11" tabindex="-1"></a><span class="st">  aspect varchar(2) CHECK (aspect IN (&#39;N&#39;, &#39;NW&#39;, &#39;NE&#39;, &#39;S&#39;, &#39;SW&#39;, &#39;SE&#39;, &#39;E&#39;, &#39;W&#39;)),</span></span>
+<span id="cb13-12"><a href="building-a-database.html#cb13-12" tabindex="-1"></a><span class="st">  weather varchar(20) CHECK (weather IN (&#39;sunny&#39;, &#39;cloudy&#39;, &#39;overcast&#39;, &#39;rainy&#39;, &#39;windy_sunny&#39;, &#39;windy_cloudy&#39;, &#39;windy_overcast&#39;, &#39;windy_rainy&#39;)),</span></span>
+<span id="cb13-13"><a href="building-a-database.html#cb13-13" tabindex="-1"></a><span class="st">  temp integer,</span></span>
+<span id="cb13-14"><a href="building-a-database.html#cb13-14" tabindex="-1"></a><span class="st">  location varchar(25),</span></span>
+<span id="cb13-15"><a href="building-a-database.html#cb13-15" tabindex="-1"></a><span class="st">  total integer,</span></span>
+<span id="cb13-16"><a href="building-a-database.html#cb13-16" tabindex="-1"></a><span class="st">  ewes integer,</span></span>
+<span id="cb13-17"><a href="building-a-database.html#cb13-17" tabindex="-1"></a><span class="st">  lambs integer,</span></span>
+<span id="cb13-18"><a href="building-a-database.html#cb13-18" tabindex="-1"></a><span class="st">  year_ewes integer,</span></span>
+<span id="cb13-19"><a href="building-a-database.html#cb13-19" tabindex="-1"></a><span class="st">  year_rams integer,</span></span>
+<span id="cb13-20"><a href="building-a-database.html#cb13-20" tabindex="-1"></a><span class="st">  rams integer,</span></span>
+<span id="cb13-21"><a href="building-a-database.html#cb13-21" tabindex="-1"></a><span class="st">  notes varchar</span></span>
+<span id="cb13-22"><a href="building-a-database.html#cb13-22" tabindex="-1"></a><span class="st">);&quot;</span>) </span></code></pre></div>
+<p>Read in the csv file.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="building-a-database.html#cb14-1" tabindex="-1"></a>observations <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;../../../Project/Data/raw/Database/observations.csv&quot;</span>)</span></code></pre></div>
+<p>Double check csv matches empty table.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="building-a-database.html#cb15-1" tabindex="-1"></a><span class="fu">names</span>(observations)</span></code></pre></div>
+<pre><code>##  [1] &quot;group_id&quot;      &quot;date&quot;          &quot;n_observers&quot;   &quot;lead_observer&quot;
+##  [5] &quot;lat&quot;           &quot;long&quot;          &quot;habitat&quot;       &quot;slope&quot;        
+##  [9] &quot;aspect&quot;        &quot;weather&quot;       &quot;temp&quot;          &quot;location&quot;     
+## [13] &quot;total&quot;         &quot;ewes&quot;          &quot;lambs&quot;         &quot;year_ewes&quot;    
+## [17] &quot;year_rams&quot;     &quot;rams&quot;          &quot;notes&quot;</code></pre>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="building-a-database.html#cb17-1" tabindex="-1"></a><span class="fu">head</span>(observations, <span class="dv">3</span>)</span></code></pre></div>
+<pre><code>##   group_id      date n_observers lead_observer      lat      long habitat slope
+## 1  240520D 5/20/2024          NA            NA 45.21563 -120.5502 outcrop   mid
+## 2  240521B 5/21/2024          NA            NA 45.41892 -120.5050 outcrop   mid
+## 3  240522B 5/22/2024          NA            NA 45.47276 -120.4737 outcrop   mid
+##   aspect weather temp       location total ewes lambs year_ewes year_rams rams
+## 1     NE  cloudy   62 horseshoe bend     2    2     0         0         0    0
+## 2     SE  cloudy   52 devil&#39;s canyon     6    3     3         0         0    0
+## 3      N  cloudy   NA      hardstone    50   28    19         3         0    0
+##   notes
+## 1    NA
+## 2    NA
+## 3    NA</code></pre>
+<p>Populate the table.</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="building-a-database.html#cb19-1" tabindex="-1"></a><span class="fu">dbWriteTable</span>(jd_sheep_db, <span class="st">&quot;observations&quot;</span>, observations, <span class="at">append =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<p>Confirm that the data was loaded properly.</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="building-a-database.html#cb20-1" tabindex="-1"></a><span class="fu">dbGetQuery</span>(jd_sheep_db, <span class="st">&quot;SELECT * FROM observations LIMIT 3&quot;</span>)</span></code></pre></div>
+<pre><code>##   group_id      date n_observers lead_observer      lat      long habitat slope
+## 1  240520D 5/20/2024          NA          &lt;NA&gt; 45.21563 -120.5502 outcrop   mid
+## 2  240521B 5/21/2024          NA          &lt;NA&gt; 45.41892 -120.5050 outcrop   mid
+## 3  240522B 5/22/2024          NA          &lt;NA&gt; 45.47276 -120.4737 outcrop   mid
+##   aspect weather temp       location total ewes lambs year_ewes year_rams rams
+## 1     NE  cloudy   62 horseshoe bend     2    2     0         0         0    0
+## 2     SE  cloudy   52 devil&#39;s canyon     6    3     3         0         0    0
+## 3      N  cloudy   NA      hardstone    50   28    19         3         0    0
+##   notes
+## 1  &lt;NA&gt;
+## 2  &lt;NA&gt;
+## 3  &lt;NA&gt;</code></pre>
+<hr />
+</div>
+<div id="mortalities-table" class="section level3 hasAnchor" number="2.4.3">
+<h3><span class="header-section-number">2.4.3</span> <strong>Mortalities Table</strong><a href="building-a-database.html#mortalities-table" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>This contains information if a sheep has died using sheepID as both the primary key and the foregin key linking it back to the Sheep Table. Data in this table includes the age of the sheep at time of death, when we received an alert of mortality signal from the collar, when we investigated the mortality and retreived the collar, and the hypothesized cause of death.</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="building-a-database.html#cb22-1" tabindex="-1"></a><span class="fu">dbExecute</span>(jd_sheep_db,</span>
+<span id="cb22-2"><a href="building-a-database.html#cb22-2" tabindex="-1"></a>          <span class="st">&quot;CREATE TABLE mortalities (</span></span>
+<span id="cb22-3"><a href="building-a-database.html#cb22-3" tabindex="-1"></a><span class="st">  sheep_id varchar(15) NOT NULL PRIMARY KEY,</span></span>
+<span id="cb22-4"><a href="building-a-database.html#cb22-4" tabindex="-1"></a><span class="st">  age varchar(2),</span></span>
+<span id="cb22-5"><a href="building-a-database.html#cb22-5" tabindex="-1"></a><span class="st">  signal date,</span></span>
+<span id="cb22-6"><a href="building-a-database.html#cb22-6" tabindex="-1"></a><span class="st">  retrieved date,</span></span>
+<span id="cb22-7"><a href="building-a-database.html#cb22-7" tabindex="-1"></a><span class="st">  cause varchar(9) CHECK (cause IN (&#39;cougar&#39;, &#39;predation&#39;, &#39;unknwn&#39;, &#39;harvest&#39;, &#39;capture&#39;)),</span></span>
+<span id="cb22-8"><a href="building-a-database.html#cb22-8" tabindex="-1"></a><span class="st">  notes varchar,</span></span>
+<span id="cb22-9"><a href="building-a-database.html#cb22-9" tabindex="-1"></a><span class="st">  FOREIGN KEY (sheep_id) REFERENCES sheep(sheep_id)</span></span>
+<span id="cb22-10"><a href="building-a-database.html#cb22-10" tabindex="-1"></a><span class="st">);&quot;</span>)</span></code></pre></div>
+<p>Read in the csv file.</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="building-a-database.html#cb23-1" tabindex="-1"></a>mortalities <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;../../../Project/Data/raw/Database/mortalities.csv&quot;</span>)</span></code></pre></div>
+<p>Double check csv matches empty table.</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="building-a-database.html#cb24-1" tabindex="-1"></a><span class="fu">names</span>(mortalities)</span></code></pre></div>
+<pre><code>## [1] &quot;sheep_id&quot;  &quot;age&quot;       &quot;signal&quot;    &quot;retrieved&quot; &quot;cause&quot;     &quot;notes&quot;</code></pre>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="building-a-database.html#cb26-1" tabindex="-1"></a><span class="fu">head</span>(mortalities, <span class="dv">3</span>)</span></code></pre></div>
+<pre><code>##   sheep_id age    signal retrieved   cause
+## 1 purple25   5 9/26/2024 9/30/2024  unknwn
+## 2 purple03  4+  7/9/2024 7/11/2024  cougar
+## 3 orange64  4+                     capture
+##                                   notes
+## 1                                      
+## 2                                      
+## 3 broken leg during capture, euthenized</code></pre>
+<p>Populate the table.</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="building-a-database.html#cb28-1" tabindex="-1"></a><span class="fu">dbWriteTable</span>(jd_sheep_db, <span class="st">&quot;mortalities&quot;</span>, mortalities, <span class="at">append =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<p>Confirm that the data was loaded properly.</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="building-a-database.html#cb29-1" tabindex="-1"></a><span class="fu">dbGetQuery</span>(jd_sheep_db, <span class="st">&quot;SELECT * FROM mortalities LIMIT 3&quot;</span>)</span></code></pre></div>
+<pre><code>##   sheep_id age    signal retrieved   cause
+## 1 purple25   5 9/26/2024 9/30/2024  unknwn
+## 2 purple03  4+  7/9/2024 7/11/2024  cougar
+## 3 orange64  4+                     capture
+##                                   notes
+## 1                                      
+## 2                                      
+## 3 broken leg during capture, euthenized</code></pre>
+<hr />
+</div>
+<div id="lambs-table" class="section level3 hasAnchor" number="2.4.4">
+<h3><span class="header-section-number">2.4.4</span> <strong>Lambs Table</strong><a href="building-a-database.html#lambs-table" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>This table uses the name of each lamb as a primary key and includes infomation on the lamb including the birthdate, date first observed, date last observed, and whether the lamb survived or not. The lambs mother (sheepID) serves as the foreign key linking it back to the Sheep Table.</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="building-a-database.html#cb31-1" tabindex="-1"></a><span class="fu">dbExecute</span>(jd_sheep_db,</span>
+<span id="cb31-2"><a href="building-a-database.html#cb31-2" tabindex="-1"></a>          <span class="st">&quot;CREATE TABLE lambs (</span></span>
+<span id="cb31-3"><a href="building-a-database.html#cb31-3" tabindex="-1"></a><span class="st">  name varchar(15) NOT NULL PRIMARY KEY,</span></span>
+<span id="cb31-4"><a href="building-a-database.html#cb31-4" tabindex="-1"></a><span class="st">  sheep_id varchar(15),</span></span>
+<span id="cb31-5"><a href="building-a-database.html#cb31-5" tabindex="-1"></a><span class="st">  birthdate date,</span></span>
+<span id="cb31-6"><a href="building-a-database.html#cb31-6" tabindex="-1"></a><span class="st">  first_seen date,</span></span>
+<span id="cb31-7"><a href="building-a-database.html#cb31-7" tabindex="-1"></a><span class="st">  fate varchar(10) CHECK (fate IN (&#39;weaned&#39;, &#39;deceased&#39;, &#39;unknwn&#39;)),</span></span>
+<span id="cb31-8"><a href="building-a-database.html#cb31-8" tabindex="-1"></a><span class="st">  last_seen date,</span></span>
+<span id="cb31-9"><a href="building-a-database.html#cb31-9" tabindex="-1"></a><span class="st">  notes varchar,</span></span>
+<span id="cb31-10"><a href="building-a-database.html#cb31-10" tabindex="-1"></a><span class="st">  FOREIGN KEY (sheep_id) REFERENCES sheep(sheep_id)</span></span>
+<span id="cb31-11"><a href="building-a-database.html#cb31-11" tabindex="-1"></a><span class="st">);&quot;</span>)</span></code></pre></div>
+<p>Read in the csv file.</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="building-a-database.html#cb32-1" tabindex="-1"></a>lambs <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;../../../Project/Data/raw/Database/lambs.csv&quot;</span>)</span></code></pre></div>
+<p>Double check csv matches empty table.</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="building-a-database.html#cb33-1" tabindex="-1"></a><span class="fu">names</span>(lambs)</span></code></pre></div>
+<pre><code>## [1] &quot;name&quot;       &quot;birthdate&quot;  &quot;first_seen&quot; &quot;fate&quot;       &quot;last_seen&quot; 
+## [6] &quot;sheep_id&quot;   &quot;notes&quot;</code></pre>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="building-a-database.html#cb35-1" tabindex="-1"></a><span class="fu">head</span>(lambs, <span class="dv">3</span>)</span></code></pre></div>
+<pre><code>##     name birthdate first_seen     fate last_seen sheep_id
+## 1   adam 4/14/2024  4/15/2024   weaned           orange56
+## 2 bailey 4/16/2024  4/16/2024 deceased 5/18/2024  white36
+## 3  baker 4/18/2024  4/19/2024   weaned           orange60
+##                                                        notes
+## 1                                                           
+## 2 observed with a broken leg for ~3 weeks prior to mortality
+## 3</code></pre>
+<p>Populate the table.</p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="building-a-database.html#cb37-1" tabindex="-1"></a><span class="fu">dbWriteTable</span>(jd_sheep_db, <span class="st">&quot;lambs&quot;</span>, lambs, <span class="at">append =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<p>Confirm that the data was loaded properly.</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="building-a-database.html#cb38-1" tabindex="-1"></a><span class="fu">dbGetQuery</span>(jd_sheep_db, <span class="st">&quot;SELECT * FROM lambs LIMIT 3&quot;</span>)</span></code></pre></div>
+<pre><code>##     name sheep_id birthdate first_seen     fate last_seen
+## 1   adam orange56 4/14/2024  4/15/2024   weaned          
+## 2 bailey  white36 4/16/2024  4/16/2024 deceased 5/18/2024
+## 3  baker orange60 4/18/2024  4/19/2024   weaned          
+##                                                        notes
+## 1                                                           
+## 2 observed with a broken leg for ~3 weeks prior to mortality
+## 3</code></pre>
+<hr />
+</div>
+<div id="resight-table" class="section level3 hasAnchor" number="2.4.5">
+<h3><span class="header-section-number">2.4.5</span> <strong>Resight Table</strong><a href="building-a-database.html#resight-table" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>This table contains data on individual resights of collared sheep and lambs, collected during observations. A resightID will serve as the primary key.The sheepID of the collared ewe will be recorded as well as her lamb status (whether she has a lamb at heel) along with the name of that lamb. Date and which group observation this resight was a part of (groupID) will also be recorded. SheepID, name, and groupID will serve as foreign keys linking back up to the Sheep, Lambs, and Observations Tables, respectivley.</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="building-a-database.html#cb40-1" tabindex="-1"></a><span class="fu">dbExecute</span>(jd_sheep_db,</span>
+<span id="cb40-2"><a href="building-a-database.html#cb40-2" tabindex="-1"></a>          <span class="st">&quot;CREATE TABLE resight (</span></span>
+<span id="cb40-3"><a href="building-a-database.html#cb40-3" tabindex="-1"></a><span class="st">  resight_id varchar(30) NOT NULL PRIMARY KEY,</span></span>
+<span id="cb40-4"><a href="building-a-database.html#cb40-4" tabindex="-1"></a><span class="st">  name varchar (15),</span></span>
+<span id="cb40-5"><a href="building-a-database.html#cb40-5" tabindex="-1"></a><span class="st">  sheep_id varchar(15),</span></span>
+<span id="cb40-6"><a href="building-a-database.html#cb40-6" tabindex="-1"></a><span class="st">  status varchar(7) CHECK (status IN (&#39;nursing&#39;, &#39;follow&#39;, &#39;contact&#39;, &#39;bedded&#39;, &#39;unknown&#39;, &#39;none&#39;)),</span></span>
+<span id="cb40-7"><a href="building-a-database.html#cb40-7" tabindex="-1"></a><span class="st">  date date,</span></span>
+<span id="cb40-8"><a href="building-a-database.html#cb40-8" tabindex="-1"></a><span class="st">  group_id char(7), </span></span>
+<span id="cb40-9"><a href="building-a-database.html#cb40-9" tabindex="-1"></a><span class="st">  FOREIGN KEY (name) REFERENCES lambs(name)</span></span>
+<span id="cb40-10"><a href="building-a-database.html#cb40-10" tabindex="-1"></a><span class="st">  FOREIGN KEY (sheep_id) REFERENCES sheep(sheep_id),</span></span>
+<span id="cb40-11"><a href="building-a-database.html#cb40-11" tabindex="-1"></a><span class="st">  FOREIGN KEY (group_id) REFERENCES observations(group_id)</span></span>
+<span id="cb40-12"><a href="building-a-database.html#cb40-12" tabindex="-1"></a><span class="st">);&quot;</span>)</span></code></pre></div>
+<p>Read in the csv file.</p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="building-a-database.html#cb41-1" tabindex="-1"></a>resight <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;../../../Project/Data/raw/Database/resight.csv&quot;</span>)</span></code></pre></div>
+<p>Double check csv matches empty table.</p>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="building-a-database.html#cb42-1" tabindex="-1"></a><span class="fu">names</span>(resight)</span></code></pre></div>
+<pre><code>## [1] &quot;resight_id&quot; &quot;sheep_id&quot;   &quot;name&quot;       &quot;status&quot;     &quot;date&quot;      
+## [6] &quot;group_id&quot;</code></pre>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="building-a-database.html#cb44-1" tabindex="-1"></a><span class="fu">head</span>(resight, <span class="dv">3</span>)</span></code></pre></div>
+<pre><code>##   resight_id sheep_id   name  status      date group_id
+## 1 240517Ao60 orange60  baker nursing 5/17/2024  240517A
+## 2 240517Ap11 purple11 sister nursing 5/17/2024  240517A
+## 3 240517Aw35  white35   hood nursing 5/17/2024  240517A</code></pre>
+<p>Populate the table.</p>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="building-a-database.html#cb46-1" tabindex="-1"></a><span class="fu">dbWriteTable</span>(jd_sheep_db, <span class="st">&quot;resight&quot;</span>, resight, <span class="at">append =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<p>Confirm that the data was loaded properly.</p>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="building-a-database.html#cb47-1" tabindex="-1"></a><span class="fu">dbGetQuery</span>(jd_sheep_db, <span class="st">&quot;SELECT * FROM resight LIMIT 3&quot;</span>)</span></code></pre></div>
+<pre><code>##   resight_id   name sheep_id  status      date group_id
+## 1 240517Ao60  baker orange60 nursing 5/17/2024  240517A
+## 2 240517Ap11 sister purple11 nursing 5/17/2024  240517A
+## 3 240517Aw35   hood  white35 nursing 5/17/2024  240517A</code></pre>
+<hr />
+</div>
+<div id="group-behavior-table" class="section level3 hasAnchor" number="2.4.6">
+<h3><span class="header-section-number">2.4.6</span> <strong>Group Behavior Table</strong><a href="building-a-database.html#group-behavior-table" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Group behavior will be recorded multiple times during observations and will include the proportion of animals in the group who are foraging, vigilant, traveling, or bedded. A timestamp of each behavior snapshot will serve as the primary key, and will link back up with the Observations Table using groupID as the foreign key.</p>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="building-a-database.html#cb49-1" tabindex="-1"></a><span class="fu">dbExecute</span>(jd_sheep_db,</span>
+<span id="cb49-2"><a href="building-a-database.html#cb49-2" tabindex="-1"></a>          <span class="st">&quot;CREATE TABLE group_behavior (</span></span>
+<span id="cb49-3"><a href="building-a-database.html#cb49-3" tabindex="-1"></a><span class="st">  timestamp datetime NOT NULL PRIMARY KEY,</span></span>
+<span id="cb49-4"><a href="building-a-database.html#cb49-4" tabindex="-1"></a><span class="st">  foraging integer,</span></span>
+<span id="cb49-5"><a href="building-a-database.html#cb49-5" tabindex="-1"></a><span class="st">  vigilant integer,</span></span>
+<span id="cb49-6"><a href="building-a-database.html#cb49-6" tabindex="-1"></a><span class="st">  traveling integer,</span></span>
+<span id="cb49-7"><a href="building-a-database.html#cb49-7" tabindex="-1"></a><span class="st">  bedded integer,</span></span>
+<span id="cb49-8"><a href="building-a-database.html#cb49-8" tabindex="-1"></a><span class="st">  sun_shade varchar(5),</span></span>
+<span id="cb49-9"><a href="building-a-database.html#cb49-9" tabindex="-1"></a><span class="st">  group_id char(7),</span></span>
+<span id="cb49-10"><a href="building-a-database.html#cb49-10" tabindex="-1"></a><span class="st">  notes varchar,</span></span>
+<span id="cb49-11"><a href="building-a-database.html#cb49-11" tabindex="-1"></a><span class="st">  FOREIGN KEY (group_id) REFERENCES observations(group_id)</span></span>
+<span id="cb49-12"><a href="building-a-database.html#cb49-12" tabindex="-1"></a><span class="st">);&quot;</span>)</span></code></pre></div>
+<p>Read in the csv file.</p>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="building-a-database.html#cb50-1" tabindex="-1"></a>group_behavior <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;../../../Project/Data/raw/Database/group_behavior.csv&quot;</span>)</span></code></pre></div>
+<p>Double check csv matches empty table.</p>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="building-a-database.html#cb51-1" tabindex="-1"></a><span class="fu">names</span>(group_behavior)</span></code></pre></div>
+<pre><code>## [1] &quot;timestamp&quot; &quot;bedded&quot;    &quot;foraging&quot;  &quot;vigilant&quot;  &quot;traveling&quot; &quot;sun_shade&quot;
+## [7] &quot;group_id&quot;  &quot;notes&quot;</code></pre>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="building-a-database.html#cb53-1" tabindex="-1"></a><span class="fu">head</span>(group_behavior, <span class="dv">3</span>)</span></code></pre></div>
+<pre><code>##         timestamp bedded foraging vigilant traveling sun_shade group_id notes
+## 1  5/17/2024 9:40      6       19        8         1       sun  240517A      
+## 2 5/17/2024 10:48     19        0        4         0       sun  240517B      
+## 3  5/20/2024 8:38      2        1        0         0       sun  240520A</code></pre>
+<p>Populate the table.</p>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="building-a-database.html#cb55-1" tabindex="-1"></a><span class="fu">dbWriteTable</span>(jd_sheep_db, <span class="st">&quot;group_behavior&quot;</span>, group_behavior, <span class="at">append =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<p>Confirm that the data was loaded properly.</p>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="building-a-database.html#cb56-1" tabindex="-1"></a><span class="fu">dbGetQuery</span>(jd_sheep_db, <span class="st">&quot;SELECT * FROM group_behavior LIMIT 3&quot;</span>)</span></code></pre></div>
+<pre><code>##         timestamp foraging vigilant traveling bedded sun_shade group_id notes
+## 1  5/17/2024 9:40       19        8         1      6       sun  240517A      
+## 2 5/17/2024 10:48        0        4         0     19       sun  240517B      
+## 3  5/20/2024 8:38        1        0         0      2       sun  240520A</code></pre>
+<hr />
+</div>
+<div id="collars-table" class="section level3 hasAnchor" number="2.4.7">
+<h3><span class="header-section-number">2.4.7</span> <strong>Collars Table</strong><a href="building-a-database.html#collars-table" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The collars table contains information about the GPS collars including serial numbers, frequencies, visual marker inforation (tag number and color), which side the hardware is on, whether it is deployed, on mortality, or retreived, the date it was deployed and the date it was retrieved. Which sheep (sheepID) the collar is affixed to will serve as a foreign key linking back to the Sheep Table. A collarID will serve as the primary key.</p>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="building-a-database.html#cb58-1" tabindex="-1"></a><span class="fu">dbExecute</span>(jd_sheep_db,</span>
+<span id="cb58-2"><a href="building-a-database.html#cb58-2" tabindex="-1"></a>          <span class="st">&quot;CREATE TABLE collars (</span></span>
+<span id="cb58-3"><a href="building-a-database.html#cb58-3" tabindex="-1"></a><span class="st">  collar_id char(8) NOT NULL PRIMARY KEY,</span></span>
+<span id="cb58-4"><a href="building-a-database.html#cb58-4" tabindex="-1"></a><span class="st">  sheep_id varchar(15),</span></span>
+<span id="cb58-5"><a href="building-a-database.html#cb58-5" tabindex="-1"></a><span class="st">  serial varchar(5),</span></span>
+<span id="cb58-6"><a href="building-a-database.html#cb58-6" tabindex="-1"></a><span class="st">  frequency real,</span></span>
+<span id="cb58-7"><a href="building-a-database.html#cb58-7" tabindex="-1"></a><span class="st">  tag_number integer,</span></span>
+<span id="cb58-8"><a href="building-a-database.html#cb58-8" tabindex="-1"></a><span class="st">  tag_color varchar(10),</span></span>
+<span id="cb58-9"><a href="building-a-database.html#cb58-9" tabindex="-1"></a><span class="st">  hardware varchar(5) CHECK (hardware IN (&#39;Right&#39;, &#39;Left&#39;)),</span></span>
+<span id="cb58-10"><a href="building-a-database.html#cb58-10" tabindex="-1"></a><span class="st">  status varchar(9) CHECK (status IN (&#39;deployed&#39;, &#39;data&#39;, &#39;clean&#39;)),</span></span>
+<span id="cb58-11"><a href="building-a-database.html#cb58-11" tabindex="-1"></a><span class="st">  deployed date,</span></span>
+<span id="cb58-12"><a href="building-a-database.html#cb58-12" tabindex="-1"></a><span class="st">  retrieved date,</span></span>
+<span id="cb58-13"><a href="building-a-database.html#cb58-13" tabindex="-1"></a><span class="st">  FOREIGN KEY (sheep_id) REFERENCES sheep(sheep_id)</span></span>
+<span id="cb58-14"><a href="building-a-database.html#cb58-14" tabindex="-1"></a><span class="st">);&quot;</span>)</span></code></pre></div>
+<p>Read in the csv file.</p>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="building-a-database.html#cb59-1" tabindex="-1"></a>collars <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;../../../Project/Data/raw/Database/collars.csv&quot;</span>)</span></code></pre></div>
+<p>Double check csv matches empty table.</p>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="building-a-database.html#cb60-1" tabindex="-1"></a><span class="fu">names</span>(group_behavior)</span></code></pre></div>
+<pre><code>## [1] &quot;timestamp&quot; &quot;bedded&quot;    &quot;foraging&quot;  &quot;vigilant&quot;  &quot;traveling&quot; &quot;sun_shade&quot;
+## [7] &quot;group_id&quot;  &quot;notes&quot;</code></pre>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="building-a-database.html#cb62-1" tabindex="-1"></a><span class="fu">head</span>(group_behavior, <span class="dv">3</span>)</span></code></pre></div>
+<pre><code>##         timestamp bedded foraging vigilant traveling sun_shade group_id notes
+## 1  5/17/2024 9:40      6       19        8         1       sun  240517A      
+## 2 5/17/2024 10:48     19        0        4         0       sun  240517B      
+## 3  5/20/2024 8:38      2        1        0         0       sun  240520A</code></pre>
+<p>Populate the table.</p>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="building-a-database.html#cb64-1" tabindex="-1"></a><span class="fu">dbWriteTable</span>(jd_sheep_db, <span class="st">&quot;collars&quot;</span>, collars, <span class="at">append =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<p>Confirm that the data was loaded properly.</p>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="building-a-database.html#cb65-1" tabindex="-1"></a><span class="fu">dbGetQuery</span>(jd_sheep_db, <span class="st">&quot;SELECT * FROM collars LIMIT 3&quot;</span>)</span></code></pre></div>
+<pre><code>##   collar_id sheep_id serial frequency tag_number tag_color hardware   status
+## 1  24_97197  Purple7  97197    151.48          7    Purple     Left deployed
+## 2  24_97198 Yellow91  97198    151.63         91    Yellow    Right deployed
+## 3  24_97199 Orange60  97199    151.38         60    Orange     Left deployed
+##    deployed retrieved
+## 1 2/16/2024          
+## 2 2/16/2024          
+## 3 2/16/2024</code></pre>
+<hr />
+</div>
+<div id="spatial-data-table" class="section level3 hasAnchor" number="2.4.8">
+<h3><span class="header-section-number">2.4.8</span> <strong>Spatial Data Table</strong><a href="building-a-database.html#spatial-data-table" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The spatial data table contains locations transmitted from GPS collars. A gpsID will serve as the primary key. Which sheep (sheepID) and collar (collarID) the location came from will serve as foreign keys linking back up to the Sheep and Collar Tables, respectively.</p>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="building-a-database.html#cb67-1" tabindex="-1"></a><span class="fu">dbExecute</span>(jd_sheep_db,</span>
+<span id="cb67-2"><a href="building-a-database.html#cb67-2" tabindex="-1"></a>          <span class="st">&quot;CREATE TABLE spatial_data (</span></span>
+<span id="cb67-3"><a href="building-a-database.html#cb67-3" tabindex="-1"></a><span class="st">  point_id varchar NOT NULL PRIMARY KEY,</span></span>
+<span id="cb67-4"><a href="building-a-database.html#cb67-4" tabindex="-1"></a><span class="st">  sheep_id varchar(15),</span></span>
+<span id="cb67-5"><a href="building-a-database.html#cb67-5" tabindex="-1"></a><span class="st">  collar_id char(8),</span></span>
+<span id="cb67-6"><a href="building-a-database.html#cb67-6" tabindex="-1"></a><span class="st">  timestamp datetime,</span></span>
+<span id="cb67-7"><a href="building-a-database.html#cb67-7" tabindex="-1"></a><span class="st">  lat real,</span></span>
+<span id="cb67-8"><a href="building-a-database.html#cb67-8" tabindex="-1"></a><span class="st">  long real</span></span>
+<span id="cb67-9"><a href="building-a-database.html#cb67-9" tabindex="-1"></a><span class="st">);&quot;</span>)</span></code></pre></div>
+<p>I do not yet have my spatial data and therefore will not populate the table at this time, but use the code below to do so when I’m ready.</p>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="building-a-database.html#cb68-1" tabindex="-1"></a><span class="co">#load csv</span></span>
+<span id="cb68-2"><a href="building-a-database.html#cb68-2" tabindex="-1"></a>spatial_data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;../../../Project/Data/raw/Database/spatial_data.csv&quot;</span>)</span>
+<span id="cb68-3"><a href="building-a-database.html#cb68-3" tabindex="-1"></a></span>
+<span id="cb68-4"><a href="building-a-database.html#cb68-4" tabindex="-1"></a><span class="co">#double check csv matches empty table</span></span>
+<span id="cb68-5"><a href="building-a-database.html#cb68-5" tabindex="-1"></a><span class="fu">names</span>(spatial_data)</span>
+<span id="cb68-6"><a href="building-a-database.html#cb68-6" tabindex="-1"></a><span class="fu">head</span>(spatial_data, <span class="dv">3</span>)</span>
+<span id="cb68-7"><a href="building-a-database.html#cb68-7" tabindex="-1"></a></span>
+<span id="cb68-8"><a href="building-a-database.html#cb68-8" tabindex="-1"></a><span class="co">#populate the table</span></span>
+<span id="cb68-9"><a href="building-a-database.html#cb68-9" tabindex="-1"></a><span class="fu">dbWriteTable</span>(jd_sheep_db, <span class="st">&quot;spatial_data&quot;</span>, spatial_data, <span class="at">append =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb68-10"><a href="building-a-database.html#cb68-10" tabindex="-1"></a></span>
+<span id="cb68-11"><a href="building-a-database.html#cb68-11" tabindex="-1"></a><span class="co">#confirm data was loaded properly </span></span>
+<span id="cb68-12"><a href="building-a-database.html#cb68-12" tabindex="-1"></a><span class="fu">dbGetQuery</span>(jd_sheep_db, <span class="st">&quot;SELECT * FROM spatial_data LIMIT 3&quot;</span>)</span></code></pre></div>
+<hr />
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="data-cleaning.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/01-chp2.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
