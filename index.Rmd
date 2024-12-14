@@ -39,7 +39,7 @@ Bighorn sheep (*Ovis canadensis*) are a large herbivore species where both nutri
 
 ## Study System
 
-The Lower John Day River Canyon in north-central Oregon is home to a thriving population of bighorn sheep. With over 1,000 individuals distributed across a rugged landscape of steep canyon walls, grasslands, and riparian corridors, this population offers an opportunity to explore ecological trade-offs and demographic drivers. The diversity of the habitat, with its mosaic of high-quality forage patches and secure escape terrain, provides an ideal setting to investigate how bighorn sheep balance nutritional needs with predation risk. Unlike many bighorn sheep populations, the Lower John Day herd has not been heavily impacted by disease, which allows for a more focused examination of the effects of nutrition and social dynamics on vital rates without the confounding influence of disease.
+The Lower John Day River Canyon in north-central Oregon is home to a thriving population of bighorn sheep with over 1,000 individuals. The diversity of the habitat, with its mosaic of high-quality forage patches and secure escape terrain, provides an ideal setting to investigate how bighorn sheep balance nutritional needs with predation risk. Unlike many bighorn sheep populations, the Lower John Day herd has not been heavily impacted by disease, which allows for a more focused examination of the effects of nutrition and social dynamics on vital rates without the confounding influence of disease.
 
 ![The John Day River Canyon](images/PXL_20240420_174757534.PANO~2.jpg)
 

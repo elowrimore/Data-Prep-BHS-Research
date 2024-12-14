@@ -3,7 +3,7 @@
     "path": "~/Fall25/WLF553/FinalProject/index.Rmd",
     "project_path": "index.Rmd",
     "type": "r_markdown",
-    "hash": "674259784",
+    "hash": "3482482894",
     "contents": "",
     "dirty": false,
     "created": 1733426982297.0,
@@ -18,14 +18,14 @@
         "rmdVisualWrapConfigured": "true",
         "docOutlineVisible": "1",
         "rmdVisualCollapsedChunks": "",
-        "rmdVisualModeLocation": "5072:3290"
+        "rmdVisualModeLocation": "3578:2774.54541015625"
     },
     "folds": "",
-    "lastKnownWriteTime": 1734123071,
+    "lastKnownWriteTime": 1734140667,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1734123071536,
+    "last_content_update": 1734140667496,
     "read_only": false,
     "read_only_alternatives": []
 }
